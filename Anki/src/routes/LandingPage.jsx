@@ -12,6 +12,8 @@ const LandingPage = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [notification, setNotification] = useState('');
+  const [viewDeck,setViewDeck]=useState(false);
+
   const deckNameRef = useRef(null);
 
   const dispatch=useDispatch();
@@ -58,6 +60,7 @@ const LandingPage = () => {
 
   const handleViewDecks = () => {
     console.log("View Decks is clicked");
+    setViewDeck(true);
   };
 
 
@@ -114,14 +117,14 @@ const LandingPage = () => {
               )}
 
               {
-               
+               viewDeck &&
                 deckItems.map((ITM)=>(
                   <DeckNameCard name={ITM} key={ITM}>
 
                   </DeckNameCard>
                   
                 ))
-                
+
               }
             
           </div>
