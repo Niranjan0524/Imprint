@@ -3,7 +3,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import {useDispatch} from 'react-redux';
 import { deckNameActions } from '../store/DeckNameSlice';
-
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import DeckNameCard from '../components/deckNameCard';
 
 const LandingPage = () => {
 
@@ -18,9 +20,12 @@ const LandingPage = () => {
     setIsModalOpen(true);
   };
 
+  
+  
   const handleInputChange = (e) => {
     // console.log("Deck Name:", e.target.value);
   };
+
 
   const handleSubmit = (e) => {    
     console.log("Deck Name:", deckNameRef.current.value);
@@ -28,22 +33,33 @@ const LandingPage = () => {
     setNotification(`Deck "${deckNameRef.current.value}" created successfully!`);
 
 
+
     dispatch(deckNameActions.addDeckName(deckNameRef.current.value));
     deckNameRef.current.value = '';
     
+
+
+    console.log(deckItems)
+
     setTimeout(() => {
       setNotification('');
     }, 3000);
     
   };
 
+
+  const deckItems=useSelector((store)=>store.deckNames)
+
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
+
   const handleViewDecks = () => {
     console.log("View Decks is clicked");
   };
+
 
   return (
     <>
@@ -88,25 +104,26 @@ const LandingPage = () => {
                 <button type="button" class="btn k btn-secondary btn-sm" onClick={handleCancel}>Delete</button>
               </div>
               </div>
-              // <div className="modal">
-              // <div className="modal-content">
-              //   <h2>Enter Deck Name</h2>
-              //   <input
-              //     type="text"
-              //     value={deckName}
-              //     onChange={handleInputChange}
-              //     placeholder="Deck Name"
-              //   />
-              //   <button onClick={handleSubmit}>Submit</button>
-              //   <button onClick={handleCancel}>Cancel</button>
-              // </div>
-              // </div>
+            
               )}
-               {notification && (
+
+              {notification && (
                   <div className="notification">
                     {notification}
                   </div>
-                )}
+              )}
+
+              {
+               
+                deckItems.map((ITM)=>(
+                  <DeckNameCard name={ITM} key={ITM}>
+
+                  </DeckNameCard>
+                  
+                ))
+                
+              }
+            
           </div>
         </div>
        
