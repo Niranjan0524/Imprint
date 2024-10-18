@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { SiAnki } from "react-icons/si";
 
 
-const Header = () => {
+const Header2 = () => {
   return (
         <header className='LandingHeader'>
         <div class="logo" >
@@ -39,4 +39,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header2;

@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-
 const deckNameSlice = createSlice({
           name:"deckNames",
           initialState:[],

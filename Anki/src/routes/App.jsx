@@ -6,6 +6,7 @@ import LandingPage from './LandingPage'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import AddCard from '../components/AddCard';
 import { Outlet } from 'react-router-dom'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   

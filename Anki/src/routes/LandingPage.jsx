@@ -13,7 +13,7 @@ const LandingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [notification, setNotification] = useState('');
   const [viewDeck,setViewDeck]=useState(false);
-
+  
   const deckNameRef = useRef(null);
 
   const dispatch=useDispatch();
@@ -84,13 +84,25 @@ const LandingPage = () => {
               >
                 Create New Deck
               </button>
+
+              {
+                viewDeck == false ?
               <button
                 type="button"
                 className="view-button btn btn-outline-success"
                 onClick={handleViewDecks}
               >
                 View Decks
+              </button>:
+              <button
+                type="button"
+                className="view-button btn btn-outline-danger"
+                onClick={()=>setViewDeck(false)}
+              >
+                Hide Decks
               </button>
+
+              }
             </div>
             {isModalOpen && (
               
@@ -124,8 +136,15 @@ const LandingPage = () => {
                   </DeckNameCard>
                   
                 ))
-
               }
+
+              {
+                viewDeck && deckItems.length==0 &&
+                <div className="notification">
+                  No Decks to display
+                </div>
+              }
+              
             
           </div>
         </div>

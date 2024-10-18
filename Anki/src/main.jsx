@@ -10,6 +10,7 @@ import SignupPage from './routes/SignUp.jsx'
 import Profile from './routes/Profile.jsx'
 import {Provider} from 'react-redux' ;
 import ankiStore from './store/index.js'
+import CardsOfDecks from './routes/cardsOfDecks.jsx'
 
 const router=createBrowserRouter([
   {
@@ -27,7 +28,10 @@ const router=createBrowserRouter([
     path:"/Signup",element:<SignupPage/>
   },
   {
-      path:"/profile",element:<Profile/>
+    path:"/profile",element:<Profile/>
+  },
+  {
+    path:"/cardsOfDeck",element:<CardsOfDecks/>
   }
   
   
