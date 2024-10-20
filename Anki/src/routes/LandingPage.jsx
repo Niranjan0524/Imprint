@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import { deckNameActions } from '../store/DeckNameSlice';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import DeckNameCard from '../components/deckNameCard';
+import DeckNameCard from '../components/DeckNameCard';
 
 const LandingPage = () => {
 
@@ -53,14 +53,25 @@ const LandingPage = () => {
   const deckItems=useSelector((store)=>store.deckNames)
 
 
-  const handleCancel = () => {
+  const handleDelete = (e) => {
+
+    dispatch(deckNameActions.removeDeckName(deckNameRef.current.value));
     setIsModalOpen(false);
+
   };
 
 
   const handleViewDecks = () => {
     console.log("View Decks is clicked");
-    setViewDeck(true);
+    if(deckItems.length==0){
+      setNotification("No Decks to display");
+      setTimeout(() => {
+        setNotification('');
+      }, 3000);
+    }
+    else{
+      setViewDeck(true);
+    }
   };
 
 
@@ -116,7 +127,7 @@ const LandingPage = () => {
                 ref={deckNameRef}
                 onChange={handleInputChange}/>
                 <button type="button" class="btn k btn-primary btn-sm" onClick={handleSubmit}>Add Deck</button>
-                <button type="button" class="btn k btn-secondary btn-sm" onClick={handleCancel}>Delete</button>
+                <button type="button" class="btn k btn-secondary btn-sm" onClick={handleDelete}>Delete</button>
               </div>
               </div>
             

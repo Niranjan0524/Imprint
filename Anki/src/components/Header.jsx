@@ -18,7 +18,7 @@ const Header = () => {
         <nav>
         <ul class="nav-links">
         <li><Link to="/">Decks</Link></li>
-        <li><Link to="/add">Add</Link></li>
+        <li><Link to="/addCard">Add</Link></li>
         <li><Link to="/search">Search</Link></li>
         </ul>
         </nav>

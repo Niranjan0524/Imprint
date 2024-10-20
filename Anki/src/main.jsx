@@ -11,6 +11,8 @@ import Profile from './routes/Profile.jsx'
 import {Provider} from 'react-redux' ;
 import ankiStore from './store/index.js'
 import CardsOfDecks from './routes/cardsOfDecks.jsx'
+import AddCard from './routes/AddCard.jsx'
+
 
 const router=createBrowserRouter([
   {
@@ -33,7 +35,10 @@ const router=createBrowserRouter([
   {
     path:"/cardsOfDeck",element:<CardsOfDecks/>
   }
-  
+  ,
+  {
+    path:"/addCard",element:<AddCard/>
+  }
   
 ])
 

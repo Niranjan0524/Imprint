@@ -32,7 +32,7 @@ const DeckNameCard=({name})=>{
               data-bs-toggle="dropdown" 
               aria-expanded="false"
               >
-              Small button
+              Actions
           </button>
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Rename</a></li>

@@ -503,13 +503,13 @@ header {
 
 .DName {
   text-decoration: none;
-  color: blue;
+  color: rgb(68, 68, 255);
   
   transition: color 0.3s ease;
 }
 
 .DName:hover {
-  color: #007bff;
+  color: #00b3ff;
   text-decoration: underline;
 }
 
@@ -517,6 +517,9 @@ header {
   position: relative;
   display: inline-block;
 }
+
+
+
 /* Dropdown styling */
 .dropdown .btn {
   background-color: #007bff;
@@ -545,3 +548,11 @@ header {
   background-color: rgb(17, 0, 0);
   height: 100vh;
 }
+
+.deckNamedisplay{
+  font-size: large;
+  font-family: 'Roboto', sans-serif;
+  text-transform: capitalize;
+  color: rgb(0, 140, 255);
+}
+
