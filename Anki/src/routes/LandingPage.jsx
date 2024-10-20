@@ -18,7 +18,7 @@ const LandingPage = () => {
 
   const dispatch=useDispatch();
   const handleCreateNewDeck = () => {
-    console.log("create new deck is clicked");
+    // console.log("create new deck is clicked");
     setIsModalOpen(true);
   };
 
@@ -62,7 +62,7 @@ const LandingPage = () => {
 
 
   const handleViewDecks = () => {
-    console.log("View Decks is clicked");
+    // console.log("View Decks is clicked");
     if(deckItems.length==0){
       setNotification("No Decks to display");
       setTimeout(() => {
@@ -81,12 +81,15 @@ const LandingPage = () => {
         <Header />
         <div className="landing-container">
           <div className="welcome-box">
-            <h2 className="welcome-title">
-              Welcome to Anki-Like App
-            </h2>
-            <h5 className="subtitle">
-              Manage your flashcards, enhance your learning, and track progress!
-            </h5>
+          <h2 className="welcome-title">
+            Welcome to Your 
+           <br />
+            Personal Flashcard Hub
+          </h2>
+          <h5 className="subtitle">
+            Create, customize, and conquer your learning with personalized flashcards!
+          </h5>
+
             <div className="action-buttons">
               <button
                 type="button"

@@ -2,18 +2,26 @@
   box-sizing: border-box;
 }
 body {
-  background: url('../assets/pexels-philippedonn-1169754.jpg');
+  background: url('./LoginBackground.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: 100%;
 }
 
+.signupheading{
+
+  font-size: 30px;
+  margin: 0% 80px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adding shadow */
+  color: #ffcc00; /* Changing color to a shade that looks good on dark background */
+}
 .container {
 
   display: flex !important;
   flex-direction: column;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.0);
   align-items: center;
   height: 100vh;
   max-width: 500px;
@@ -35,7 +43,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-input {
+.loginButtons {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 25px;
@@ -48,16 +56,16 @@ pre {
   font-size: larger;
 }
 
-button {
+.SignupPageButtons {
   background: #05b462 !important;
   padding: 5px;
   border-radius: 10px;
   width: 100%;
 }
 
-button:hover{
+.SignupPageButtons:hover{
   background-color: #038548 !important;
-}
+} 
 
 p {
   color: rgb(255, 0, 0);
@@ -67,6 +75,14 @@ p {
   color:white;
   margin: 2px;
   padding: 5px;
+
+}
+
+.signupPageInputs{
+  width: 100%; 
+  padding: 12px; 
+  border: none;
+  border-radius: 5px;
 }
 
 span{

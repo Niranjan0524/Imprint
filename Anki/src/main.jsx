@@ -12,6 +12,8 @@ import {Provider} from 'react-redux' ;
 import ankiStore from './store/index.js'
 import CardsOfDecks from './routes/cardsOfDecks.jsx'
 import AddCard from './routes/AddCard.jsx'
+import Login from './routes/login-page.jsx'
+import Signup from './routes/signup-page.jsx'
 
 
 const router=createBrowserRouter([
@@ -24,10 +26,10 @@ const router=createBrowserRouter([
     path:"/Landingpage",element:<LandingPage/>
   },
   {
-    path:"/Login",element:<LoginPage/>
+    path:"/Login",element:<Login/>
   },
   {
-    path:"/Signup",element:<SignupPage/>
+    path:"/Signup",element:<Signup/>
   },
   {
     path:"/profile",element:<Profile/>

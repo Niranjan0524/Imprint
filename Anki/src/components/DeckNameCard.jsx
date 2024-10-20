@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deckNameActions } from "../store/DeckNameSlice";
 
 
 const DeckNameCard=({name})=>{
 
 
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };  
+
+  const handleDeleteDeck=()=>{   
+
+    dispatch(deckNameActions.removeDeckName(name));
+    
+  };
 
   const handleClickOnDeck=()=>{
     console.log("Clicked on Deck");
@@ -37,7 +47,7 @@ const DeckNameCard=({name})=>{
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Rename</a></li>
           <li><a class="dropdown-item" href="#">Share</a></li>
-          <li><a class="dropdown-item" href="#">Delete</a></li>
+          <li><a class="dropdown-item" href="#" onClick={handleDeleteDeck}>Delete</a></li>
           </ul>
         </div>
       </div>

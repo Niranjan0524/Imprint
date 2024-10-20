@@ -341,9 +341,10 @@ header {
   padding: 50px;
   /* background-color: #fff3f3;
    */
-  min-height: 81.2vh;
+  min-height: 80vh;
  
-   display: flex;
+  display: flex;
+  
    justify-content: center;
   
 }
@@ -355,17 +356,19 @@ header {
 
 .welcome-box {
   /* background-color: #edecec; */
-  background-color: rgba(249, 249, 249, 0.8); 
+  background-color: rgb(203, 203, 203); 
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0px 8px 16px rgba(218, 215, 215, 0.1);
-  
+  opacity: 0.9;
   width: 50%;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
   height: 40%;
 }
 
 .welcome-title {
-  color: red;
+  color: rgb(255, 42, 0);
   margin-bottom: 20px;
 }
 
@@ -384,16 +387,23 @@ header {
 
 .create-button {
   background-color: #cb0505;
-  margin-right:16px ;
+  margin-right: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  /* background: linear-gradient(135deg, #ff7e5f, #feb47b); */
+  transition: all 0.3s ease;
 
 }
 
 .create-button:hover {
   background-color: #2588fa;
+
 }
 
 .view-button {
   background-color: #f44336;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  /* background: linear-gradient(135deg, #ff7e5f, #feb47b); */
+  transition: all 0.3s ease;
 }
 
 .view-button:hover {
@@ -466,14 +476,18 @@ header {
 }
 
 .notification {
-  position: fixed;
+  /* position: fixed;
   top: 20px;
-  right: 20px;
+  right: 20px; */
   background: #56ce5a;
   color: white;
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 10px 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 
@@ -504,7 +518,7 @@ header {
 .DName {
   text-decoration: none;
   color: rgb(68, 68, 255);
-  
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   transition: color 0.3s ease;
 }
 

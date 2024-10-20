@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import './Signup.css' ;
+import '../components/Signup.css' ;
 
 function Signup() {
     const initialValues = {
@@ -62,7 +62,7 @@ function Signup() {
                 ) : null}
 
                 <form onSubmit={handleSubmit}>
-                    <h1>Sign Up</h1>
+                    <h1 className="signupheading">Sign Up</h1>
                     <div className="ui divider"></div>
                     <div className="ui form">
                         <div className="field">
@@ -70,6 +70,7 @@ function Signup() {
                             <input
                                 type="text"
                                 name="username"
+                                className="signupPageInputs"
                                 placeholder="Choose a username"
                                 value={formValues.username}
                                 onChange={handleChange}
@@ -81,6 +82,7 @@ function Signup() {
                             <input
                                 type="text"
                                 name="email"
+                                className="signupPageInputs"
                                 placeholder="Email"
                                 value={formValues.email}
                                 onChange={handleChange}
@@ -92,6 +94,7 @@ function Signup() {
                             <input
                                 type="password"
                                 name="password"
+                                className="signupPageInputs"
                                 placeholder="Password"
                                 value={formValues.password}
                                 onChange={handleChange}
@@ -103,16 +106,17 @@ function Signup() {
                             <input
                                 type="password"
                                 name="confirmPassword"
+                                className="signupPageInputs"
                                 placeholder="Confirm password"
                                 value={formValues.confirmPassword}
                                 onChange={handleChange}
                             />
                         </div>
                         <p>{formErrors.confirmPassword}</p>
-                        <button className="fluid ui button blue">Submit</button>
+                        <button className="SignupPageButtons fluid ui button blue">Submit</button>
                     </div>
                     <div className="text">
-                        Already have an account? <Link to="/login-page">Login</Link>
+                        Already have an account? <Link to="/Login">Login</Link>
                     </div>
                 </form>
             </div>

@@ -2,12 +2,27 @@
   color: aliceblue;
 }
 .CardsOfDeckContainer{
-  background-image: url("./cardBackground.jpg");
+  background-image: url("./cardBackground2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  /* background-size: contain; */
+  height: 101vh;
+  /* background-color: black; */
+  /* opacity: 0;             Initially invisible */
+  animation: fadeIn 1s ease-in backwards;  
+  /* transform: translateY(20px);  */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); 
+  }
 }
 
 .flashcard-container{

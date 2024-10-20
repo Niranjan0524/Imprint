@@ -36,18 +36,18 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container_s">
       {Object.keys(formErrors).length === 0 && isSubmit ? (
-        <div className="ui message success">Logged in successfully</div>
+        <div className="ui_s message_s success_s">Logged in successfully</div>
       ) : (
         console.log("Entered Details", formValues)
       )}
 
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
-        <div className="ui divider"></div>
-        <div className="ui form">
-          <div className="field">
+        <div className="ui_s divider_s"></div>
+        <div className="ui_s form_s">
+          <div className="field_s">
             <label>Email</label>
             <input
               type="text"
@@ -58,7 +58,7 @@ function Login() {
             />
           </div>
           <p>{formErrors.email}</p>
-          <div className="field">
+          <div className="field_s">
             <label>Password</label>
             <input
               type="password"
@@ -69,10 +69,10 @@ function Login() {
             />
           </div>
           <p>{formErrors.password}</p>
-          <button className="fluid ui button blue">Login</button>
+          <button className="fluid_s ui_s button_s blue_s">Login</button>
         </div>
       </form>
-      <div className="text">
+      <div className="text_s">
         Don’t have an account? <Link to="/">Sign Up</Link>
       </div>
     </div>
@@ -80,3 +80,4 @@ function Login() {
 }
 
 export default Login;
+
