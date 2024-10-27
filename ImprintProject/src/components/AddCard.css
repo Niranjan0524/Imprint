@@ -39,3 +39,70 @@
 .AddcardFrom{
   padding: 5px;
 }
+
+
+.generate-btn {
+  background: linear-gradient(135deg, #f39c12, #e74c3c); /* Gold to Red gradient */
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.7), 0 0 40px rgba(231, 76, 60, 0.7); /* Glow effect */
+  transition: transform 0.2s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.generate-btn:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: opacity 0.3s ease, transform 0.6s ease;
+  transform: rotate(45deg);
+  opacity: 0;
+  z-index: -1;
+}
+
+.generate-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(243, 156, 18, 0.9), 0 0 50px rgba(231, 76, 60, 0.9); /* Stronger glow on hover */
+}
+
+.generate-btn:hover:before {
+  opacity: 1;
+  transform: rotate(45deg) translate(50%, 50%);
+}
+
+.generate-btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-25deg);
+  transition: left 0.4s ease;
+}
+
+.generate-btn:hover:after {
+  left: 125%;
+}
+
+.generateWithAI{
+  margin: 0 auto;
+  margin-left: 33%;
+  margin-bottom: 20px;
+}
+
+.b{
+  margin: 10px;
+}
