@@ -3,6 +3,7 @@ import "../components/AddCard.css";
 import Header from "../components/Header";
 
 const AddCard = () => {
+
   const [notification, setNotification] = useState("");
 
   const deckNameRef = useRef("");
@@ -11,6 +12,7 @@ const AddCard = () => {
   const tagsRef = useRef("");
 
   const [mcq, setMcq] = useState(false);
+  const [generatedMCQ, setGeneratedMCQ] = useState(null);
 
   const handleSubmit = () => {
     const deckNamevalue = deckNameRef.current.value;
@@ -40,9 +42,38 @@ const AddCard = () => {
     setMcq(false);
   };
 
-  const handleGenerate = () => {
-    console.log("Generate");
+  // const handleGenerate = () => {
+  //   console.log("Generate");
+   
+  // };
+  
+
+  const handleGenerate = async () => {
+    try {
+      const question = frontRef.current.value; // Use the front value as the question
+
+      // Send POST request to your backend
+      const response = await fetch("http://127.0.0.1:5000", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ question }),
+      });
+
+      if (!response.ok) throw new Error("Failed to fetch MCQ");
+
+      const mcqData = await response.json();
+      setGeneratedMCQ(mcqData); // Save generated MCQ data in state for display
+
+      setNotification("MCQ generated successfully!");
+    } catch (error) {
+      console.error("Error generating MCQ:", error);
+      setNotification("Failed to generate MCQ. Please try again.");
+    }
   };
+
+
   return (
     <>
       <div className="AddCardContainer">

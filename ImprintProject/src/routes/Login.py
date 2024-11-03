@@ -16,12 +16,14 @@ curr = conn.cursor()
 @app.route('/login', methods=["POST"])
 def login():
     data = request.get_json()
+    name=data.get("Username")
     email = data.get("email")
     pwd = data.get("password")
-    curr.execute("INSERT INTO Users (email,password) values (%s,%s)",(email,pwd))
+
+    x=curr.execute("INSERT INTO Users (name,email,password) values (%s,%s,%s)",(name,email,pwd))
     conn.commit()
     print("Inserted Successfully")
-    if email == "test@example.com" and pwd == "password123":
+    if x:
         return jsonify({"message": "Login Successful"}), 200
     else:
         return jsonify({"message": "Invalid credentials"}), 400

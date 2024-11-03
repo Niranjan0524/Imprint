@@ -1,17 +1,48 @@
-
 import { SiAnki } from "react-icons/si";
-
 import pic from "/Images/imprintLogo.jpg"
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Box } from '@mui/material';
+import {useSignIn} from 'react-auth-kit';
+import axios from 'axios';
+import { AxiosError } from 'axios';
 
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const signIn=useSignIn();
 
-  const handleLogin = () => {
+  const handleLogin = async ({email,password}) => {
     console.log("Logged in");
+    console.log(email);
+    console.log(password);
+
+    setError("");
+
+    try{
+      const response=await axios.post("http://localhost:5000/login",{email,password});
+
+      signIn({
+        token:response.data.token,
+        expireIn:3600,
+        tokentype:"Bearer",
+        authState:{email:email}
+      })
+
+    }
+    catch(err){
+      console.log(err);
+      setError("Invalid email or password");
+      if(err && err instanceof AxiosError){
+        setError(err.response.data.message);
+      }
+      else if(err && err instanceof Error){
+          setError(err.message);
+      }
+
+      console.log(err);
+    }
   };
 
   return (
@@ -71,9 +102,10 @@ const LoginPage = () => {
    className="login-field"
  />
  <Button
+  type="button"
    variant="contained"
    color="primary"
-   onClick={handleLogin}
+   onClick={()=>handleLogin({email,password})}
    fullWidth
    className="login-button"
  >

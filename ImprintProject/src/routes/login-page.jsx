@@ -11,13 +11,14 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent page reload
 
+    const { email, password } = formValues;
     try {
       const response = await fetch("http://127.0.0.1:5000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({email, password }),
         
       });
 
