@@ -5,6 +5,7 @@ import Header from "../components/Header";
 const AddCard = () => {
 
   const [notification, setNotification] = useState("");
+  const [options, setOptions] = useState([]);
 
   const deckNameRef = useRef("");
   const frontRef = useRef("");
@@ -64,8 +65,14 @@ const AddCard = () => {
       if (!response.ok) throw new Error("Failed to fetch MCQ");
 
       const mcqData = await response.json();
+
       setGeneratedMCQ(mcqData); // Save generated MCQ data in state for display
       console.log(mcqData);
+      console.log(mcqData.Options);
+      setOptions(mcqData.Options);
+
+     
+    
       setNotification("MCQ generated successfully!");
       setTimeout(() => {
         setNotification('');
@@ -79,6 +86,8 @@ const AddCard = () => {
     }
   };
 
+  const handleApproveAll = () => { }
+  const handleDisapproveAll = () =>{}
 
   return (
     <>
@@ -154,8 +163,6 @@ const AddCard = () => {
             <fieldset class="row mb-3">
               <legend class="col-form-label col-sm-2 pt-0">Type:</legend>
               <div class="col-sm-10">
-               
-
                 <input
                   type="radio"
                   className="btn-check"
@@ -197,6 +204,22 @@ const AddCard = () => {
               </div>
             )}
 
+            {mcq && options.length > 0 && (
+              <div className="mcq-container">
+                
+                <div className="mcq-options">
+                  {options.map((x, index) => (
+                    <div className="mcq-option" key={index}>
+                      {x}
+                    </div>
+                  ))}
+                </div> 
+                <div className="mcq-actions">
+                  <button className="mcq-button approve" onClick={handleApproveAll}>Approve All</button>
+                  <button className="mcq-button disapprove" onClick={handleDisapproveAll}>Disapprove All</button>
+                </div>               
+              </div>
+            )}
             <button
               type="submit"
               class="AddCardButton btn btn-primary"

@@ -1,7 +1,7 @@
 .AddCardContainer{
   background-color: #1f1f1f;
-  height: 100vh;
-  
+  min-height: 150vh;
+  height: 100vh;  
   
 }
 
@@ -14,8 +14,7 @@
   background-color: darkslategray;
   /* flex-direction: column; */
   justify-content: center;
-  border-radius: 10px;
-  
+  border-radius: 10px;  
   align-items: center;
   margin: 5% auto;
   box-shadow: 0 0 10px 0 rgba(255, 238, 0, 0.2);
@@ -105,4 +104,70 @@
 
 .b{
   margin: 10px;
+}
+.mcq-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #e0f7fa; /* Changed background color */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow */
+  margin-bottom: 10px;
+}
+
+.mcq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.mcq-option {
+  padding: 5px;
+  background-color: #ffffff;
+  border: 1px solid #b0bec5; /* Changed border color */
+  border-radius: 4px;
+  cursor: pointer;
+  color: #37474f; /* Changed text color */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform transition */
+}
+
+.mcq-option:hover {
+  background-color: #92edf9; /* Changed hover background color */
+  transform: scale(1.05); /* Added scale effect on hover */
+}
+
+
+.mcq-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.mcq-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.mcq-button.approve {
+  background-color: #4caf50;
+  color: white;
+}
+.mcq-button.approve:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.mcq-button.disapprove {
+  background-color: #f44336;
+  color: white;
+}
+
+.mcq-button.disapprove:hover {
+  background-color: #e53935;
+  transform: scale(1.05);
 }
