@@ -24,10 +24,10 @@ function Signup() {
         setFormErrors(validate(formValues));
         setIsSubmit(true);
         
-    
-        const {username,email,password,Cpassword } = formValues;
+        if(formErrors.length === 0){
+        const {username,email,password,confirmPassword } = formValues;
         try {
-          const response = await fetch("http://127.0.0.1:5000/login", {
+          const response = await fetch("http://127.0.0.1:5000/signup", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -39,6 +39,7 @@ function Signup() {
           const data = await response.json();
           if (response.ok) {
             alert(data.message); // Login Successful
+            window.location.href = "/login"; // Redirect to home page
           } else {
             alert(data.message); // Invalid credentials
           }
@@ -46,9 +47,11 @@ function Signup() {
           console.error("Error:", error);
           alert("An error occurred. Please try again.");
         }
-      };
-    
-
+      }
+      else{
+        alert("error occured");
+      }
+    }
     
 
     useEffect(() => {
@@ -150,5 +153,6 @@ function Signup() {
         </div>
     );
 }
+
 
 export default Signup;

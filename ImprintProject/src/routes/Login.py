@@ -4,7 +4,9 @@ import mysql.connector
 
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for React
+
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 conn = mysql.connector.connect(
     host = "localhost",
     user = "root",
@@ -13,20 +15,57 @@ conn = mysql.connector.connect(
 )
 
 curr = conn.cursor()
-@app.route('/login', methods=["POST"])
-def login():
+@app.route('/signup', methods=["POST"])
+def signup():
     data = request.get_json()
-    name=data.get("Username")
+    name=data.get("username")
     email = data.get("email")
     pwd = data.get("password")
 
-    x=curr.execute("INSERT INTO Users (name,email,password) values (%s,%s,%s)",(name,email,pwd))
-    conn.commit()
-    print("Inserted Successfully")
-    if x:
+    try:
+        curr = conn.cursor()
+        curr.execute("select * from users where email=%s", (email,))
+        user = curr.fetchone()
+        if user:
+            print("User already exists")
+            return jsonify({"message": "User already exists"}), 400
+  
+        curr.execute("INSERT INTO users (name, email, password) VALUES (%s, %s, %s)", (name, email, pwd))
+        conn.commit()
+        print("Inserted Successfully")
         return jsonify({"message": "Login Successful"}), 200
-    else:
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
         return jsonify({"message": "Invalid credentials"}), 400
+    finally:
+        curr.close()
+
+
+
+
+@app.route('/login', methods=["POST"])
+def login():
+    data = request.get_json()
+    email = data.get("email")
+    pwd = data.get("password")
+
+    try:
+        curr = conn.cursor()
+        curr.execute("select * from users where email=%s and password=%s", (email, pwd))
+        user = curr.fetchone()
+
+        if user:
+            print("Login Successful")
+            return jsonify({"message": "Login Successful"}), 200
+        else:
+            print("Invalid credentials")
+            return jsonify({"message": "Invalid credentials"}), 400
+    except mysql.connector.Error as err:
+        print(f"Error: {err}") 
+        return jsonify({"message": "Invalid credentials"}), 400       
+    finally:
+        curr.close()
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
