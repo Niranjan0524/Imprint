@@ -1,7 +1,7 @@
 .AddCardContainer{
   background-color: #1f1f1f;
   height: 100vh;
-  animation: fadeIn 2s ease-in-out;
+  
   
 }
 
@@ -19,7 +19,7 @@
   align-items: center;
   margin: 5% auto;
   box-shadow: 0 0 10px 0 rgba(255, 238, 0, 0.2);
-  
+  animation: fadeIn 2s ease-in-out;
 }
 
 

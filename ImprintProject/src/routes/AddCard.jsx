@@ -51,25 +51,31 @@ const AddCard = () => {
   const handleGenerate = async () => {
     try {
       const question = frontRef.current.value; // Use the front value as the question
-
+      const answer=backRef.current.value; // Use the back value as the answer
       // Send POST request to your backend
-      const response = await fetch("http://127.0.0.1:5000", {
+      const response = await fetch("http://127.0.0.1:5000/alternative", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question ,answer}),
       });
 
       if (!response.ok) throw new Error("Failed to fetch MCQ");
 
       const mcqData = await response.json();
       setGeneratedMCQ(mcqData); // Save generated MCQ data in state for display
-
+      console.log(mcqData);
       setNotification("MCQ generated successfully!");
+      setTimeout(() => {
+        setNotification('');
+      }, 3000);
     } catch (error) {
       console.error("Error generating MCQ:", error);
       setNotification("Failed to generate MCQ. Please try again.");
+      setTimeout(() => {
+        setNotification('');
+      }, 3000);
     }
   };
 
