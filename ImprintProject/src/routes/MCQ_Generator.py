@@ -26,7 +26,7 @@ def Parse(message: AIMessage) -> str:
 def run_query(query):
     return db.run(query)
 
-MySQL_URI = 'mysql+mysqlconnector://root:Niranjan05%40@localhost:3306/Anki'
+MySQL_URI = 'mysql+mysqlconnector://root:password@localhost:3306/Anki'
 db = SQLDatabase.from_uri(MySQL_URI)
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash",google_api_key="apiKey")
 app = Flask(__name__)
